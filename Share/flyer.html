@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>YourFreePlate – Share Flyer</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: #f0f0f0;
+      display: flex;
+      justify-content: center;
+      padding: 30px 20px;
+    }
+
+    .page {
+      width: 794px;
+      background: #fff;
+      overflow: hidden;
+      box-shadow: 0 8px 40px rgba(0,0,0,0.18);
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* HEADER */
+    .header {
+      background: linear-gradient(135deg, #1A7A6E, #145f56);
+      color: #fff;
+      text-align: center;
+      padding: 36px 40px 30px;
+    }
+    .header .logo { font-size: 13px; letter-spacing: 3px; text-transform: uppercase; color: #a8d5cf; font-weight: 700; margin-bottom: 10px; }
+    .header h1 { font-size: 36px; font-weight: 900; line-height: 1.2; margin-bottom: 6px; }
+    .header h1 span { display: block; color: #c8e6e3; font-size: 24px; font-weight: 600; margin-top: 6px; }
+    .header .badge { display: inline-block; margin-top: 12px; background: #F4873B; color: #fff; font-size: 13px; font-weight: 800; padding: 8px 24px; border-radius: 50px; }
+
+    /* HERO IMAGE STRIP */
+    .hero-images { display: flex; height: 200px; overflow: hidden; }
+    .hero-images img { flex: 1; width: 33.33%; object-fit: cover; object-position: center; display: block; filter: brightness(0.92); }
+    .hero-images img:nth-child(2) { border-left: 3px solid #fff; border-right: 3px solid #fff; }
+
+    /* TAGLINE */
+    .tagline { text-align: center; font-size: 15px; color: #1A7A6E; font-weight: 700; padding: 20px 40px 16px; border-bottom: 2px solid #d4eae7; background: #e8f5f3; }
+
+    /* BODY */
+    .body { padding: 28px 40px; flex: 1; }
+
+    .columns { display: flex; gap: 28px; margin-bottom: 26px; }
+    .col { flex: 1; }
+    .col h3 { font-size: 13px; font-weight: 800; color: #145f56; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px; padding-bottom: 7px; border-bottom: 3px solid #1A7A6E; }
+
+    .check-list { list-style: none; }
+    .check-list li { font-size: 13.5px; color: #333; padding: 8px 0 8px 26px; position: relative; border-bottom: 1px solid #e8f5f3; line-height: 1.5; }
+    .check-list li::before { content: '✓'; position: absolute; left: 0; color: #1A7A6E; font-weight: 900; }
+
+    .steps { display: flex; flex-direction: column; gap: 12px; }
+    .step { display: flex; align-items: flex-start; gap: 12px; }
+    .step-num { min-width: 32px; height: 32px; background: #1A7A6E; color: #fff; font-size: 15px; font-weight: 900; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .step-text strong { display: block; font-size: 13.5px; color: #1A7A6E; font-weight: 700; }
+    .step-text span { font-size: 12.5px; color: #666; line-height: 1.5; }
+
+    /* FAMILY PHOTO + QUOTE */
+    .family-row { display: flex; align-items: stretch; gap: 0; margin-bottom: 24px; border-radius: 14px; overflow: hidden; border: 2px solid #d4eae7; }
+    .family-img { width: 220px; flex-shrink: 0; object-fit: cover; object-position: center top; display: block; }
+    .family-quote { flex: 1; background: #e8f5f3; padding: 22px 24px; display: flex; flex-direction: column; justify-content: center; }
+    .family-quote .quote-mark { font-size: 48px; color: #1A7A6E; line-height: 1; margin-bottom: 4px; font-family: Georgia, serif; }
+    .family-quote p { font-size: 14px; color: #2D2D2D; line-height: 1.7; font-style: italic; margin-bottom: 10px; }
+    .family-quote .attribution { font-size: 12px; color: #1A7A6E; font-weight: 700; }
+
+    /* CTA BOX */
+    .cta-box { background: linear-gradient(135deg, #F4873B, #d9712e); border-radius: 14px; text-align: center; padding: 26px 36px; margin-bottom: 20px; }
+    .cta-box h2 { font-size: 22px; color: #fff; font-weight: 900; margin-bottom: 6px; }
+    .cta-box p  { font-size: 13px; color: #fff8f2; margin-bottom: 16px; line-height: 1.6; }
+    .cta-url    { display: inline-block; background: #fff; color: #1A7A6E; font-size: 17px; font-weight: 900; padding: 11px 34px; border-radius: 50px; text-decoration: none; }
+    .cta-box .or-email { font-size: 12px; color: #fff8f2; margin-top: 10px; }
+
+    /* TRUST BADGES */
+    .trust-row { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; margin-bottom: 6px; }
+    .trust-badge { background: #e8f5f3; color: #1A7A6E; font-size: 11.5px; font-weight: 700; padding: 7px 14px; border-radius: 50px; border: 1.5px solid #d4eae7; }
+
+    /* FOOTER */
+    .footer { background: #2D2D2D; color: #aaa; text-align: center; padding: 16px 30px; font-size: 12px; }
+    .footer a { color: #a8d5cf; text-decoration: none; }
+    .footer strong { color: #fff; }
+
+    @media print {
+      body { background: #fff; padding: 0; }
+      .page { box-shadow: none; width: 100%; }
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="logo">🍽 YourFreePlate NY</div>
+    <h1>FREE Meals Delivered To Your Door<span>Comidas GRATIS Entregadas a Tu Puerta</span></h1>
+    <div class="badge">✓ NY Medicaid Benefit &nbsp;|&nbsp; 100% Free — No Cost Ever</div>
+  </div>
+
+  <!-- HERO IMAGE STRIP -->
+  <div class="hero-images">
+    <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=400&auto=format&fit=crop&q=80" alt="Fresh healthy meal"/>
+    <img src="https://images.unsplash.com/photo-1547592180-85f173990554?w=400&auto=format&fit=crop&q=80" alt="Nutritious food"/>
+    <img src="https://images.unsplash.com/photo-1600335895229-6e75511892c8?w=400&auto=format&fit=crop&q=80" alt="Meal delivery"/>
+  </div>
+
+  <!-- TAGLINE -->
+  <div class="tagline">
+    If you have NY Medicaid — you or someone you know may qualify! &nbsp;·&nbsp;
+    ¡Si tienes Medicaid de NY, tú o alguien que conoces puede calificar!
+  </div>
+
+  <!-- BODY -->
+  <div class="body">
+
+    <div class="columns">
+      <div class="col">
+        <h3>✅ Who Qualifies? · ¿Quién Califica?</h3>
+        <ul class="check-list">
+          <li>Active NY State Medicaid</li>
+          <li>Food insecurity or limited meal access</li>
+          <li>Chronic or qualifying medical condition</li>
+          <li>Pregnant or postpartum (up to 12 months)</li>
+          <li>Referred by a doctor or social worker</li>
+          <li>Difficulty accessing food transportation</li>
+        </ul>
+      </div>
+      <div class="col">
+        <h3>🚀 How It Works · Cómo Funciona</h3>
+        <div class="steps">
+          <div class="step">
+            <div class="step-num">1</div>
+            <div class="step-text"><strong>🔍 Check Eligibility</strong><span>Fill a simple 2-minute form online or email us</span></div>
+          </div>
+          <div class="step">
+            <div class="step-num">2</div>
+            <div class="step-text"><strong>✍️ Get Approved</strong><span>Our team contacts you within 24 hours</span></div>
+          </div>
+          <div class="step">
+            <div class="step-num">3</div>
+            <div class="step-text"><strong>🍱 Receive Meals</strong><span>Fresh, nutritious meals delivered to your home — free</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Family Photo + Testimonial — FIXED IMAGE -->
+    <div class="family-row">
+      <img class="family-img"
+           src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=400&auto=format&fit=crop&q=80"
+           alt="Happy family at home"/>
+      <div class="family-quote">
+        <div class="quote-mark">&ldquo;</div>
+        <p>I had no idea this program existed. Within 48 hours of applying,
+           fresh meals were at my door. It changed everything for my family.</p>
+        <span class="attribution">— Maria G., Bronx, NY &nbsp;|&nbsp; NY Medicaid Member</span>
+      </div>
+    </div>
+
+    <!-- CTA Box -->
+    <div class="cta-box">
+      <h2>Apply Now — It's Completely Free!</h2>
+      <p>Less than 2 minutes to apply. No credit card. No hidden fees. Ever.<br/>
+         Menos de 2 minutos. Sin tarjeta de crédito. Sin cargos ocultos. Nunca.</p>
+      <a class="cta-url" href="https://yourfreeplate.com">yourfreeplate.com</a>
+      <p class="or-email">or email · o escríbenos: <strong style="color:#fff;">apply@yourfreeplate.com</strong></p>
+    </div>
+
+    <!-- Trust Badges -->
+    <div class="trust-row">
+      <span class="trust-badge">🏛 NY State Authorized</span>
+      <span class="trust-badge">🔒 HIPAA Safe</span>
+      <span class="trust-badge">💰 $0 Cost — Always Free</span>
+      <span class="trust-badge">⚕ Doctor Approved</span>
+      <span class="trust-badge">🌎 English &amp; Spanish</span>
+    </div>
+
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <strong>YourFreePlate NY</strong> · An authorized NY Medicaid meal delivery program ·
+    <a href="https://yourfreeplate.com">yourfreeplate.com</a> ·
+    <a href="mailto:apply@yourfreeplate.com">apply@yourfreeplate.com</a>
+  </div>
+
+</div>
+</body>
+</html>
