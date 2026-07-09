@@ -175,7 +175,7 @@ body.lang-es [data-lang="es"]{display:block}
         <span data-lang="en">&#8592; Back to Home</span>
         <span data-lang="es">&#8592; Volver al Inicio</span>
       </a>
-      <a href="index.html#eligibility" class="btn btn-primary" style="padding:9px 20px;font-size:.9rem">
+      <a href="../index.html#eligibility" class="btn btn-primary" style="padding:9px 20px;font-size:.9rem">
         <span data-lang="en">Apply Free</span>
         <span data-lang="es">Aplica Gratis</span>
       </a>
@@ -196,7 +196,7 @@ body.lang-es [data-lang="es"]{display:block}
     <p data-lang="en">New York State created the SCN program to address food insecurity among Medicaid members. Here&rsquo;s everything you need to know &mdash; straight from official government sources.</p>
     <p data-lang="es">El Estado de Nueva York cre&oacute; el programa SCN para abordar la inseguridad alimentaria entre los miembros de Medicaid. Aqu&iacute; est&aacute; todo lo que necesitas saber &mdash; directamente de fuentes gubernamentales oficiales.</p>
     <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap">
-      <a href="index.html#eligibility" class="btn btn-primary">
+      <a href="../index.html#eligibility" class="btn btn-primary">
         <span data-lang="en">&#10003; Apply Now &mdash; It&rsquo;s Free</span>
         <span data-lang="es">&#10003; Aplica Ahora &mdash; Es Gratis</span>
       </a>
@@ -481,7 +481,7 @@ body.lang-es [data-lang="es"]{display:block}
     <p data-lang="en">Applying takes less than 2 minutes. Serving Hudson Valley, Bronx &amp; select Brooklyn/Queens zip codes &mdash; at zero cost to you.</p>
     <p data-lang="es">Aplicar toma menos de 2 minutos. Servimos Hudson Valley, Bronx y c&oacute;digos postales selectos de Brooklyn/Queens &mdash; sin costo para ti.</p>
     <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap">
-      <a href="index.html#eligibility" class="btn-white">
+      <a href="../index.html#eligibility" class="btn-white">
         <span data-lang="en">&#10003; Apply Now &mdash; It&rsquo;s Free</span>
         <span data-lang="es">&#10003; Aplica Ahora &mdash; Es Gratis</span>
       </a>
@@ -504,8 +504,8 @@ body.lang-es [data-lang="es"]{display:block}
     <a href="index.html" data-lang="en">&#8592; Back to Home</a>
     <a href="index.html" data-lang="es">&#8592; Volver al Inicio</a>
     &nbsp;&middot;&nbsp;
-    <a href="index.html#eligibility" data-lang="en">Apply Now</a>
-    <a href="index.html#eligibility" data-lang="es">Aplica Ahora</a>
+    <a href="../index.html#eligibility" data-lang="en">Apply Now</a>
+    <a href="../index.html#eligibility" data-lang="es">Aplica Ahora</a>
   </p>
   <p style="margin-top:10px;font-size:.75rem;color:rgba(255,255,255,.3)" data-lang="en">&copy; 2025 YourFreePlate &middot; Authorized NY Medicaid Program &middot; All rights reserved.</p>
   <p style="margin-top:10px;font-size:.75rem;color:rgba(255,255,255,.3)" data-lang="es">&copy; 2025 YourFreePlate &middot; Programa Autorizado de Medicaid de NY &middot; Todos los derechos reservados.</p>
@@ -566,13 +566,13 @@ function runScnZipCheck() {
     },
     bronx: {
       icon:'✅', color:'white', bg:'rgba(255,255,255,.15)', border:'rgba(255,255,255,.3)',
-      en: `<strong>ZIP ${zip} — Bronx is fully served!</strong> <a href="index.html#eligibility" style="color:white;font-weight:800;text-decoration:underline">Apply now — it's free ›</a>`,
-      es: `<strong>ZIP ${zip} — ¡El Bronx est&aacute; completamente cubierto!</strong> <a href="index.html#eligibility" style="color:white;font-weight:800;text-decoration:underline">Aplica ahora — es gratis ›</a>`
+      en: `<strong>ZIP ${zip} — Bronx is fully served!</strong> <a href="../index.html#eligibility" style="color:white;font-weight:800;text-decoration:underline">Apply now — it's free ›</a>`,
+      es: `<strong>ZIP ${zip} — ¡El Bronx est&aacute; completamente cubierto!</strong> <a href="../index.html#eligibility" style="color:white;font-weight:800;text-decoration:underline">Aplica ahora — es gratis ›</a>`
     },
     bkq_ok: {
       icon:'✅', color:'white', bg:'rgba(255,255,255,.15)', border:'rgba(255,255,255,.3)',
-      en: `<strong>ZIP ${zip} is in our service area!</strong> <a href="index.html#eligibility" style="color:white;font-weight:800;text-decoration:underline">Apply now — it's free ›</a>`,
-      es: `<strong>¡ZIP ${zip} est&aacute; en nuestra &aacute;rea de servicio!</strong> <a href="index.html#eligibility" style="color:white;font-weight:800;text-decoration:underline">Aplica ahora — es gratis ›</a>`
+      en: `<strong>ZIP ${zip} is in our service area!</strong> <a href="../index.html#eligibility" style="color:white;font-weight:800;text-decoration:underline">Apply now — it's free ›</a>`,
+      es: `<strong>¡ZIP ${zip} est&aacute; en nuestra &aacute;rea de servicio!</strong> <a href="../index.html#eligibility" style="color:white;font-weight:800;text-decoration:underline">Aplica ahora — es gratis ›</a>`
     },
     bkq_no: {
       icon:'❌', color:'#ffcccc', bg:'rgba(231,76,60,.25)', border:'rgba(231,76,60,.4)',
@@ -581,8 +581,8 @@ function runScnZipCheck() {
     },
     hudson: {
       icon:'✅', color:'white', bg:'rgba(255,255,255,.15)', border:'rgba(255,255,255,.3)',
-      en: `<strong>ZIP ${zip} — we serve your area!</strong> <a href="index.html#eligibility" style="color:white;font-weight:800;text-decoration:underline">Apply now — it's free ›</a>`,
-      es: `<strong>ZIP ${zip} — ¡servimos tu &aacute;rea!</strong> <a href="index.html#eligibility" style="color:white;font-weight:800;text-decoration:underline">Aplica ahora — es gratis ›</a>`
+      en: `<strong>ZIP ${zip} — we serve your area!</strong> <a href="../index.html#eligibility" style="color:white;font-weight:800;text-decoration:underline">Apply now — it's free ›</a>`,
+      es: `<strong>ZIP ${zip} — ¡servimos tu &aacute;rea!</strong> <a href="../index.html#eligibility" style="color:white;font-weight:800;text-decoration:underline">Aplica ahora — es gratis ›</a>`
     }
   };
 
