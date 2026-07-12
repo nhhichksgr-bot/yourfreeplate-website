@@ -1609,22 +1609,21 @@ async function postData(payload, action, onOk, onErr, btn, origHtml) {
 // The server will XOR-wrap the key with a master key from PropertiesService.
 async function encryptImage(base64DataUrl) {
   if (!base64DataUrl || !window.crypto || !window.crypto.subtle) {
-    // Fallback: no encryption (rare — only very old browsers)
     return { encryptedData: base64DataUrl, iv: '', key: '', encrypted: false };
   }
   try {
-    // 1. Generate a fresh AES-256-GCM key for this upload
+    // 1. Generate AES-256-GCM key
     const cryptoKey = await crypto.subtle.generateKey(
       { name: 'AES-GCM', length: 256 },
-      true,       // exportable
+      true,
       ['encrypt', 'decrypt']
     );
 
-    // 2. Random 96-bit IV (recommended for GCM)
+    // 2. Random 96-bit IV
     const iv = crypto.getRandomValues(new Uint8Array(12));
 
-    // 3. Encode the full data URL as bytes
-    const encoder = new TextEncoder();
+    // 3. Encode the data URL as bytes
+    const encoder   = new TextEncoder();
     const plainBytes = encoder.encode(base64DataUrl);
 
     // 4. Encrypt
@@ -1634,11 +1633,19 @@ async function encryptImage(base64DataUrl) {
       plainBytes
     );
 
-    // 5. Export key as raw bytes
+    // 5. Export raw key bytes
     const rawKey = await crypto.subtle.exportKey('raw', cryptoKey);
 
-    // 6. Convert everything to base64 strings
-    const toBase64 = buf => btoa(String.fromCharCode(...new Uint8Array(buf)));
+    // 6. Chunked base64 conversion — fixes "Maximum call stack size exceeded"
+    const toBase64 = buf => {
+      const bytes  = new Uint8Array(buf);
+      let binary   = '';
+      const CHUNK  = 8192;
+      for (let i = 0; i < bytes.length; i += CHUNK) {
+        binary += String.fromCharCode(...bytes.subarray(i, i + CHUNK));
+      }
+      return btoa(binary);
+    };
 
     return {
       encryptedData: toBase64(cipherBuffer),
@@ -1646,6 +1653,7 @@ async function encryptImage(base64DataUrl) {
       key:           toBase64(rawKey),
       encrypted:     true
     };
+
   } catch (err) {
     console.warn('Encryption failed, sending without card encryption:', err);
     return { encryptedData: base64DataUrl, iv: '', key: '', encrypted: false };
