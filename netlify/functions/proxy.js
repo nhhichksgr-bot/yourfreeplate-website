@@ -6,7 +6,7 @@ exports.handler = async function(event) {
   }
 
   // ── PASTE YOUR REAL APPS SCRIPT URL HERE ──
-  const TARGET_URL = 'https://script.google.com/macros/s/AKfycbwH1I1qw8a-JrXz6lJwOVfD_62PLBOLV0bWMYgvPfXvrKJQYJ8yWOisdjukMY_WfG2s0g/exec';
+  const TARGET_URL = 'https://script.google.com/macros/s/AKfycbwqdjNpHIoUnlU9fP152LayXEkvzpEWtgBrVmGEXORU-OutDcb-Yc4MF8caXVLtbMzj-g/exec';
 
   try {
     const response = await fetch(TARGET_URL, {
