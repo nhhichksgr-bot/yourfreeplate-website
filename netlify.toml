@@ -29,4 +29,9 @@
   to     = "/.netlify/functions/proxy"
   status = 200
 [functions]
-  timeout = 30
+
+    [functions.timeout]
+    external_node_modules = [
+      "module-one",
+      "module-two"
+    ]
