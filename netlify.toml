@@ -23,6 +23,8 @@
   to   = "https://yourfreeplate.com/:splat"
   status = 301
   force  = true
-  from = "/proxy"
-  to   = "/.netlify/functions/proxy"
+# Proxy function redirect
+[[redirects]]
+  from   = "/proxy"
+  to     = "/.netlify/functions/proxy"
   status = 200
